@@ -4,6 +4,7 @@ const gameBoard = {
 
 const boardSection = document.getElementById('board');
 
+
 const player = (name, symbol) => {
   const getName = () => name;
   const getSymbol = () => symbol;
