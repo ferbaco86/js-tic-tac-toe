@@ -2,8 +2,11 @@ const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
 
-const domListener = () => {
-  alert('Danger watch out');
+const domListener = (event) => {
+  
+  if (event.target.nodeName === "DIV"){
+    alert(event.target.getAttribute('id'));
+  }
 }
 
 const boardSection = document.getElementById('board');
