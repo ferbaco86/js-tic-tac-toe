@@ -1,0 +1,13 @@
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  width: 200px;
+}
+
+.square {
+  width: 90px;
+  height: 90px;
+  border: 5px solid goldenrod;
+}
