@@ -5,13 +5,15 @@ let counterPlays = 0;
 const domListener = (event) => {
   if (event.target.nodeName === "DIV") {
     const target = event.target;
-    let attributeId = target.getAttribute('id');
-    if (counterPlays % 2 === 0 ) {
+    let id = target.getAttribute('id');
+    if (counterPlays % 2 === 0 && gameBoard.board[id] === '') {
       target.innerHTML = 'X';
+      gameBoard.board[id] = "X";
       counterPlays += 1;
     }
-    else {
+    else if (gameBoard.board[id] === '') {
       target.innerHTML = 'O';
+      gameBoard.board[id] = 'O';
       counterPlays += 1;
     }
   }
