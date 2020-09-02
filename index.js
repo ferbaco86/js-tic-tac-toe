@@ -1,8 +1,13 @@
 const gameBoard = {
-  board: ['X', 'X', 'O', 'O', 'X', 'X', 'O', 'X', 'O'],
+  board: ['', '', '', '', '', '', '', '', ''],
 };
 
+const domListener = () => {
+  alert('Danger watch out');
+}
+
 const boardSection = document.getElementById('board');
+boardSection.addEventListener('click', domListener)
 
 
 const player = (name, symbol) => {
