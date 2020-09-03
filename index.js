@@ -2,6 +2,8 @@ const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
 
+let counterPlays = 0;
+
 const player = (name, symbol) => {
   const getName = () => name;
   const getSymbol = () => symbol;
@@ -39,6 +41,9 @@ const checkWinner = () => {
     } else if (countO === 3) {
       winner = 2;
     }
+    if (counterPlays > 8) {
+      winner = 3;
+    }
   });
   return winner;
 };
@@ -46,7 +51,6 @@ const checkWinner = () => {
 const player1 = player('John', 'X');
 const player2 = player('Jude', 'O');
 
-let counterPlays = 0;
 const domListener = (p1Symbol, p2Symbol) => {
   if (window.event.target.nodeName === 'DIV') {
     const { target } = window.event;
@@ -71,6 +75,9 @@ const gameLogic = (p1, p2) => {
   }
   if (gameWinner === 2) {
     alert(`${p2.getName()} IS THE WINNER!!`);
+  }
+  if (gameWinner === 3) {
+    alert('THE GAME IS TIED!!');
   }
 };
 
