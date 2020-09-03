@@ -106,4 +106,7 @@ btnAddPlayer1.addEventListener('click', () => {
   player1.setName(txtPlayer1.value);
   alert(`Registered player is ${player1.getName()}`);
 });
-btnAddPlayer2.addEventListener('click', player2);
+btnAddPlayer2.addEventListener('click', () => {
+  player2.setName(txtPlayer2.value);
+  alert(`Registered player is ${player2.getName()}`);
+});
