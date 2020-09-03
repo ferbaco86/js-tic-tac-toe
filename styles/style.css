@@ -1,4 +1,4 @@
-#board {
+.board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -26,4 +26,8 @@
 .player2 {
   display: flex;
   margin: 0 30px;
+}
+
+.is-hidden {
+  display: none;
 }

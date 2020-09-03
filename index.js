@@ -3,6 +3,7 @@ const txtPlayer2 = document.getElementById('secondname');
 const btnAddPlayer2 = document.getElementById('btnplayer2');
 const btnAddPlayer1 = document.getElementById('btnplayer1');
 const btnEndGame = document.getElementById('end-game');
+const boardSection = document.querySelector('.board');
 
 
 const gameBoard = {
@@ -76,6 +77,17 @@ const setSymbol = (p1Symbol, p2Symbol) => {
   }
 };
 
+const endGame = () => {
+  for (let index = 0; index < gameBoard.board.length; index += 1) {
+    gameBoard.board[index] = '';
+  }
+  const gameUi = document.getElementsByClassName('square');
+  for (let index = 0; index < gameUi.length; index += 1) {
+    gameUi[index].innerHTML = '';
+  }
+  counterPlays = 0;
+};
+
 const gameLogic = (p1, p2) => {
   setSymbol(p1.getSymbol(), p2.getSymbol());
   const gameWinner = checkWinner();
@@ -93,18 +105,21 @@ const gameLogic = (p1, p2) => {
   }
 };
 
-const endGame = () => {
-  for (let index = 0; index < gameBoard.board.length; index += 1) {
-    gameBoard.board[index] = '';
+const showBoard = () => {
+  if (btnEndGame.innerHTML === 'Start Game') {
+    btnEndGame.innerHTML = 'Stop Game';
+  } else {
+    btnEndGame.innerHTML = 'Start Game';
   }
-  const gameUi = document.getElementsByClassName('square');
-  for (let index = 0; index < gameUi.length; index += 1) {
-    gameUi[index].innerHTML = '';
-  }
-  counterPlays = 0;
+  boardSection.classList.toggle('is-hidden');
 };
 
-const boardSection = document.getElementById('board');
+const stopGame = () => {
+  endGame();
+  showBoard();
+};
+
+
 boardSection.addEventListener('click', gameLogic.bind(window.event, player1, player2));
 btnAddPlayer1.addEventListener('click', () => {
   player1.setName(txtPlayer1.value);
@@ -114,4 +129,4 @@ btnAddPlayer2.addEventListener('click', () => {
   player2.setName(txtPlayer2.value);
   alert(`Registered player is ${player2.getName()}`);
 });
-btnEndGame.addEventListener('click', endGame);
+btnEndGame.addEventListener('click', stopGame);
