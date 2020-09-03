@@ -1,3 +1,8 @@
+const txtPlayer1 = document.getElementById('firstname');
+const txtPlayer2 = document.getElementById('secondname');
+const btnAddPlayer2 = document.getElementById('btnplayer2');
+const btnAddPlayer1 = document.getElementById('btnplayer1');
+
 const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
@@ -47,9 +52,6 @@ const checkWinner = () => {
   return winner;
 };
 
-const player1 = player('John', 'X');
-const player2 = player('Jude', 'O');
-
 const setSymbol = (p1Symbol, p2Symbol) => {
   if (window.event.target.nodeName === 'DIV') {
     const { target } = window.event;
@@ -80,5 +82,18 @@ const gameLogic = (p1, p2) => {
   }
 };
 
+const addPlayer = () => {
+  alert('Adding a name');
+  return player(txtPlayer1.innerHTML, 'X');
+};
+
+const addPlayer2 = () => {
+  return player(txtPlayer2.innerHTML, 'X');
+};
+const player1 = addPlayer();
+const player2 = addPlayer2();
+
 const boardSection = document.getElementById('board');
 boardSection.addEventListener('click', gameLogic.bind(window.event, player1, player2));
+btnAddPlayer1.addEventListener('click', addPlayer);
+btnAddPlayer2.addEventListener('click', addPlayer2);
