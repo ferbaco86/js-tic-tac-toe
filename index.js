@@ -29,7 +29,6 @@ const checkWinner = () => {
     let countO = 0;
 
     for (let index = 0; index < element.length; index += 1) {
-      // console.log(index);
       if (gameBoard.board[element[index]] === 'X') {
         countX += 1;
       } else if (gameBoard.board[element[index]] === 'O') {
@@ -51,7 +50,7 @@ const checkWinner = () => {
 const player1 = player('John', 'X');
 const player2 = player('Jude', 'O');
 
-const domListener = (p1Symbol, p2Symbol) => {
+const setSymbol = (p1Symbol, p2Symbol) => {
   if (window.event.target.nodeName === 'DIV') {
     const { target } = window.event;
     const id = target.getAttribute('id');
@@ -68,7 +67,7 @@ const domListener = (p1Symbol, p2Symbol) => {
 };
 
 const gameLogic = (p1, p2) => {
-  domListener(p1.getSymbol(), p2.getSymbol());
+  setSymbol(p1.getSymbol(), p2.getSymbol());
   const gameWinner = checkWinner();
   if (gameWinner === 1) {
     alert(`${p1.getName()} IS THE WINNER!!`);
