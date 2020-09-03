@@ -63,5 +63,16 @@ const domListener = (p1Symbol, p2Symbol) => {
   }
 };
 
+const gameLogic = (p1, p2) => {
+  domListener(p1.getSymbol(), p2.getSymbol());
+  const gameWinner = checkWinner();
+  if (gameWinner === 1) {
+    alert(`${p1.getName()} IS THE WINNER!!`);
+  }
+  if (gameWinner === 2) {
+    alert(`${p2.getName()} IS THE WINNER!!`);
+  }
+};
+
 const boardSection = document.getElementById('board');
-boardSection.addEventListener('click', domListener.bind(window.event, player1.getSymbol(), player2.getSymbol()));
+boardSection.addEventListener('click', gameLogic.bind(window.event, player1, player2));
