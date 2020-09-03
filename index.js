@@ -12,8 +12,14 @@ let counterPlays = 0;
 const player = (name, symbol) => {
   const getName = () => name;
   const getSymbol = () => symbol;
-  return { getName, getSymbol };
+  const setName = (playerName) => {
+    name = playerName;
+  };
+  return { getName, getSymbol, setName };
 };
+
+const player1 = player('', 'X');
+const player2 = player('', 'O');
 
 const winConditions = {
   con_1: [0, 1, 2],
@@ -82,18 +88,22 @@ const gameLogic = (p1, p2) => {
   }
 };
 
-const addPlayer = () => {
-  alert('Adding a name');
-  return player(txtPlayer1.innerHTML, 'X');
-};
+// const addPlayer = () => {
+//   alert('Adding a name');
+//   return player(txtPlayer1.value, 'X');
+// };
 
-const addPlayer2 = () => {
-  return player(txtPlayer2.innerHTML, 'X');
-};
-const player1 = addPlayer();
-const player2 = addPlayer2();
+// const addPlayer2 = () => {
+//   return player(txtPlayer2.value, 'X');
+// // };
+// const player1 = addPlayer();
+// const player2 = addPlayer2();
+
 
 const boardSection = document.getElementById('board');
 boardSection.addEventListener('click', gameLogic.bind(window.event, player1, player2));
-btnAddPlayer1.addEventListener('click', addPlayer);
-btnAddPlayer2.addEventListener('click', addPlayer2);
+btnAddPlayer1.addEventListener('click', () => {
+  player1.setName(txtPlayer1.value);
+  alert(`Registered player is ${player1.getName()}`);
+});
+btnAddPlayer2.addEventListener('click', player2);
