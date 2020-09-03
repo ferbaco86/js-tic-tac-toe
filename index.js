@@ -81,12 +81,15 @@ const gameLogic = (p1, p2) => {
   const gameWinner = checkWinner();
   if (gameWinner === 1) {
     alert(`${p1.getName()} IS THE WINNER!!`);
+    endGame();
   }
   if (gameWinner === 2) {
     alert(`${p2.getName()} IS THE WINNER!!`);
+    endGame();
   }
   if (gameWinner === 3) {
     alert('THE GAME IS TIED!!');
+    endGame();
   }
 };
 
@@ -98,6 +101,7 @@ const endGame = () => {
   for (let index = 0; index < gameUi.length; index += 1) {
     gameUi[index].innerHTML = '';
   }
+  counterPlays = 0;
 };
 
 const boardSection = document.getElementById('board');
