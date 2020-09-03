@@ -4,6 +4,7 @@ const btnAddPlayer2 = document.getElementById('btnplayer2');
 const btnAddPlayer1 = document.getElementById('btnplayer1');
 const btnEndGame = document.getElementById('end-game');
 
+
 const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
@@ -89,11 +90,15 @@ const gameLogic = (p1, p2) => {
   }
 };
 
-// const endGame = () => {
-//   for (let index = 0; index < gameBoard.board.length; index += 1) {
-//     gameBoard.board[index] = '';
-//   }
-// };
+const endGame = () => {
+  for (let index = 0; index < gameBoard.board.length; index += 1) {
+    gameBoard.board[index] = '';
+  }
+  const gameUi = document.getElementsByClassName('square');
+  for (let index = 0; index < gameUi.length; index += 1) {
+    gameUi[index].innerHTML = '';
+  }
+};
 
 const boardSection = document.getElementById('board');
 boardSection.addEventListener('click', gameLogic.bind(window.event, player1, player2));
