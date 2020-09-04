@@ -1,9 +1,11 @@
 const txtPlayer1 = document.getElementById('firstname');
 const txtPlayer2 = document.getElementById('secondname');
-const btnAddPlayer2 = document.getElementById('btnplayer2');
-const btnAddPlayer1 = document.getElementById('btnplayer1');
+const btnAddPlayers = document.getElementById('btnplayers');
 const btnEndGame = document.getElementById('end-game');
+const btnStart = document.getElementById('start-game');
 const boardSection = document.querySelector('.board');
+const boardContainer = document.querySelector('.board-container');
+const endGameBtnContainer = document.querySelector('.end-btn-container');
 
 
 const gameBoard = {
@@ -105,28 +107,67 @@ const gameLogic = (p1, p2) => {
   }
 };
 
+const hideElement = element => { element.classList.toggle('is-hidden'); };
+
 const showBoard = () => {
   if (btnEndGame.innerHTML === 'Start Game') {
     btnEndGame.innerHTML = 'Stop Game';
   } else {
     btnEndGame.innerHTML = 'Start Game';
   }
-  boardSection.classList.toggle('is-hidden');
+  hideElement(boardSection);
+};
+
+const startGame = () => {
+  const playersInput = document.querySelector('.players');
+  const introContainer = document.querySelector('.intro-container');
+  introContainer.classList.add('is-hidden');
+  playersInput.classList.remove('is-hidden');
+};
+
+const showChangePlayersBtn = () => {
+  hideElement(document.getElementById('change-game'));
 };
 
 const stopGame = () => {
   endGame();
   showBoard();
+  showChangePlayersBtn();
 };
 
+const addPlayers = () => {
+  player1.setName(txtPlayer1.value);
+  player2.setName(txtPlayer2.value);
+  document.getElementById('p1-title').innerHTML = player1.getName();
+  document.getElementById('p2-title').innerHTML = player2.getName();
+};
 
 boardSection.addEventListener('click', gameLogic.bind(window.event, player1, player2));
-btnAddPlayer1.addEventListener('click', () => {
-  player1.setName(txtPlayer1.value);
-  alert(`Registered player is ${player1.getName()}`);
+btnAddPlayers.addEventListener('click', () => {
+  addPlayers();
+  hideElement(boardSection);
+  hideElement(document.querySelector('.players'));
+  hideElement(boardContainer);
+  hideElement(endGameBtnContainer);
+  btnAddPlayers.remove();
 });
-btnAddPlayer2.addEventListener('click', () => {
-  player2.setName(txtPlayer2.value);
-  alert(`Registered player is ${player2.getName()}`);
-});
+
+document.getElementById('p1-title').innerHTML = player1.getName();
+document.getElementById('p2-title').innerHTML = player1.getName();
+
+
 btnEndGame.addEventListener('click', stopGame);
+document.getElementById('change-game').addEventListener('click', () => {
+  hideElement(document.querySelector('.players'));
+  hideElement(endGameBtnContainer);
+  showChangePlayersBtn();
+  hideElement(document.getElementById('btn-confirm-change'));
+});
+btnStart.addEventListener('click', startGame);
+document.getElementById('btn-confirm-change').addEventListener('click', () => {
+  addPlayers();
+  hideElement(endGameBtnContainer);
+  hideElement(document.querySelector('.players'));
+  hideElement(document.getElementById('btn-confirm-change'));
+  showChangePlayersBtn();
+});

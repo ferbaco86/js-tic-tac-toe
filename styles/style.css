@@ -1,9 +1,19 @@
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-  width: 200px;
 }
 
 .square {
@@ -16,18 +26,26 @@
   height: 220px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.player1 {
+.player {
   display: flex;
+  flex-direction: column;
   margin: 30px 30px;
 }
 
-.player2 {
+.player-info {
   display: flex;
-  margin: 0 30px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .is-hidden {
   display: none;
+}
+
+.end-btn-container {
+  text-align: center;
+  margin-top: 50px;
 }

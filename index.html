@@ -7,37 +7,54 @@
     <title>JS TIC-TAC-TOE</title>
 </head>
 <body>
-    <div class="players">
-        <div class="player1 ">
-            First Player's name: <input type="text" id="firstname">
-            <button id="btnplayer1"> Add First user</button>
-        </div>
-        <div class="player2">
-            Second Player's name: <input type="text" id="secondname">
-            <button id="btnplayer2"> Add Second user</button>
-        </div>
+    <div class="intro-container"> 
+        <h1>TIC-TAC-TOE</h1>
+        <button id="start-game">Press to Start</button>
     </div>
-    <section class="is-hidden board">
-        <div id="0" class="square">
+        <div class="players is-hidden">
+            <div class="player">
+                First Player's name: <input type="text" id="firstname">
+            </div>
+            <div class="player">
+                Second Player's name: <input type="text" id="secondname">
+            </div>
+            <button id="btnplayers"> Add Players</button>
+            <button id="btn-confirm-change" class="is-hidden"> Confirm Players Change</button>
         </div>
-        <div id="1" class="square">
+        <div class="board-container is-hidden">
+            <section class="player-info">
+                <h3 id="p1-title"></h3>
+                <h3>X</h3>
+            </section>
+            <section class="is-hidden board">
+                <div id="0" class="square">
+                </div>
+                <div id="1" class="square">
+                </div>
+                <div id="2" class="square">
+                </div>
+                <div id="3" class="square">
+                </div>
+                <div id="4" class="square">
+                </div>
+                <div id="5" class="square">
+                </div>
+                <div id="6" class="square">
+                </div>
+                <div id="7" class="square">
+                </div>
+                <div id="8" class="square">
+                </div>
+            </section>
+            <section class="player-info">
+                <h3 id="p2-title"></h3>
+                <h3>O</h3>
+            </section>
         </div>
-        <div id="2" class="square">
+        <div class="end-btn-container is-hidden">
+            <button id="end-game">Stop Game</button>
+            <button id="change-game" class="is-hidden">Change Players</button>
         </div>
-        <div id="3" class="square">
-        </div>
-        <div id="4" class="square">
-        </div>
-        <div id="5" class="square">
-        </div>
-        <div id="6" class="square">
-        </div>
-        <div id="7" class="square">
-        </div>
-        <div id="8" class="square">
-        </div>
-    </section>
-    <button id="end-game">Start Game</button>
     <script src="index.js"></script> 
 </body>
 </html>
