@@ -190,9 +190,9 @@ const showIntro = () => {
   const ticTitle = document.getElementById('tic');
   const tacTitle = document.getElementById('tac');
   const toeTitle = document.getElementById('toe');
-  const ticAudio = new Audio('./sounds/tic.wav');
-  const tacAudio = new Audio('./sounds/tac.wav');
-
+  const ticAudio = new Audio('./sounds/fx1.wav');
+  const tacAudio = new Audio('./sounds/fx2.wav');
+  const btnAudio = new Audio('./sounds/fx3.wav');
 
   function playSound(audio) {
     if (!audio) {
@@ -216,7 +216,7 @@ const showIntro = () => {
   };
   const showBtn = () => {
     domManipulation.btnStart.classList.remove('is-hidden');
-    playSound(ticAudio);
+    playSound(btnAudio);
   };
 
   setTimeout(showTic, 2000);
@@ -225,7 +225,22 @@ const showIntro = () => {
   setTimeout(showBtn, 3700);
 };
 
+// const playBGM = () => {
+//   const bgAudio = new Audio('./sounds/IntroBg.wav');
+
+//   function playSound(audio) {
+//     if (!audio) {
+//       return;
+//     }
+//     audio.currentTime = 0;
+//     audio.play();
+//   }
+
+//   playSound(bgAudio);
+// };
+
 showIntro();
+// playBGM();
 
 domManipulation.boardSection.addEventListener('click', gameLogic.bind(window.event, addPlayers.player1, addPlayers.player2));
 domManipulation.btnAddPlayers.addEventListener('click', domManipulation.togglePlayerInfo);
@@ -237,4 +252,6 @@ domManipulation.btnStart.addEventListener('click', domManipulation.startGame);
 domManipulation.btnConfirmChange.addEventListener('click', () => {
   addPlayers.setPlayerInfo();
   domManipulation.toggleStartStop();
+
+
 });
