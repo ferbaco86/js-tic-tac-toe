@@ -186,6 +186,47 @@ const gameLogic = (p1, p2) => {
   }
 };
 
+const showIntro = () => {
+  const ticTitle = document.getElementById('tic');
+  const tacTitle = document.getElementById('tac');
+  const toeTitle = document.getElementById('toe');
+  const ticAudio = new Audio('./sounds/tic.wav');
+  const tacAudio = new Audio('./sounds/tac.wav');
+
+
+  function playSound(audio) {
+    if (!audio) {
+      return;
+    }
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const showTic = () => {
+    ticTitle.classList.remove('is-hidden');
+    playSound(tacAudio);
+  };
+  const showTac = () => {
+    tacTitle.classList.remove('is-hidden');
+    playSound(ticAudio);
+  };
+  const showToe = () => {
+    toeTitle.classList.remove('is-hidden');
+    playSound(tacAudio);
+  };
+  const showBtn = () => {
+    domManipulation.btnStart.classList.remove('is-hidden');
+    playSound(ticAudio);
+  };
+
+  setTimeout(showTic, 2000);
+  setTimeout(showTac, 2700);
+  setTimeout(showToe, 3200);
+  setTimeout(showBtn, 3700);
+};
+
+showIntro();
+
 domManipulation.boardSection.addEventListener('click', gameLogic.bind(window.event, addPlayers.player1, addPlayers.player2));
 domManipulation.btnAddPlayers.addEventListener('click', domManipulation.togglePlayerInfo);
 
