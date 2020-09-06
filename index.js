@@ -66,7 +66,7 @@ const gameBoardController = (() => {
       } else if (countO === 3) {
         winner = 2;
       }
-      if (counterPlays > 8) {
+      if (counterPlays > 8 && winner === 0) {
         winner = 3;
       }
     });
