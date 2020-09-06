@@ -20,7 +20,7 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
-  background-image: url(/images/Tic-tac-toe-board.png);
+  background-image: url("../images/Tic-tac-toe-board.png");
   background-size: contain;
   height: 90vh;
   background-repeat: no-repeat;
@@ -68,6 +68,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-top: 50px;
 }
 
 .board {
@@ -75,7 +76,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  background-image: url(/images/Tic-tac-toe-board.png);
+  background-image: url("../images/Tic-tac-toe-board.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -93,9 +94,6 @@ body {
   margin: 40px auto !important;
   height: 300px;
   width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
@@ -128,12 +126,6 @@ body {
   margin: 15px 0;
 }
 
-.player-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .player-info-wins {
   font-size: 1.4em;
 }
@@ -142,7 +134,9 @@ body {
   color: #0000AA;
 }
 
-.nes-balloon {
+.player-info,
+.nes-balloon,
+.players {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -126,10 +126,10 @@ const gameBoardController = (() => {
 const addPlayers = (() => {
   const player1 = player('', 'X');
   const player2 = player('', 'O');
+  const txtPlayer1 = document.getElementById('firstname');
+  const txtPlayer2 = document.getElementById('secondname');
 
   const setPlayerInfo = () => {
-    const txtPlayer1 = document.getElementById('firstname');
-    const txtPlayer2 = document.getElementById('secondname');
     player1.setName(txtPlayer1.value);
     player2.setName(txtPlayer2.value);
     document.getElementById('p1-title').innerHTML = player1.getName();
@@ -139,6 +139,8 @@ const addPlayers = (() => {
   return {
     player1,
     player2,
+    txtPlayer1,
+    txtPlayer2,
     setPlayerInfo,
   };
 })();
@@ -309,16 +311,33 @@ const showIntro = () => {
   setTimeout(showBtn, 3700);
 };
 
+const inputValidation = (input1, input2) => {
+  const alertMessage = document.getElementById('alertMessage');
+  if (input1.value === '' || input2.value === '') {
+    alertMessage.classList.remove('is-hidden');
+    return false;
+  }
+
+  alertMessage.classList.add('is-hidden');
+  return true;
+};
+
 showIntro();
 
 domManipulation.boardSection.addEventListener('click', gameLogic.bind(window.event, addPlayers.player1, addPlayers.player2));
-domManipulation.btnAddPlayers.addEventListener('click', domManipulation.togglePlayerInfo);
+domManipulation.btnAddPlayers.addEventListener('click', () => {
+  if (inputValidation(addPlayers.txtPlayer1, addPlayers.txtPlayer2) === true) {
+    domManipulation.togglePlayerInfo();
+  }
+});
 
 domManipulation.btnEndGame.addEventListener('click', domManipulation.stopGame);
 domManipulation.btnChangePlayers.addEventListener('click', domManipulation.toggleStartStop);
 
 domManipulation.btnStart.addEventListener('click', domManipulation.startGame);
 domManipulation.btnConfirmChange.addEventListener('click', () => {
-  addPlayers.setPlayerInfo();
-  domManipulation.toggleStartStop();
+  if (inputValidation(addPlayers.txtPlayer1, addPlayers.txtPlayer2) === true) {
+    addPlayers.setPlayerInfo();
+    domManipulation.toggleStartStop();
+  }
 });
