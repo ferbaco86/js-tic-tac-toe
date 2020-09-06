@@ -27,7 +27,6 @@ body {
   background-position: center;
   grid-template-columns: 20% 20% 20%;
   grid-template-rows: repeat(3,1fr);
-  font-size: 2em;
   margin: 40px;
 }
 
@@ -88,7 +87,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
 }
 
 .players {
@@ -141,7 +139,6 @@ body {
 }
 
 .win-alert {
-  font-size: 2em;
   color: #0000AA;
 }
 
@@ -158,4 +155,15 @@ body {
 .end-btn-container {
   text-align: center;
   margin-top: 50px;
+}
+
+.equal-sign,
+.intro-container,
+.win-alert,
+.square {
+  font-size: 2em;
+}
+
+button:hover {
+  cursor: pointer !important;
 }

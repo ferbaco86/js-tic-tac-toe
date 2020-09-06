@@ -13,6 +13,11 @@ const audioController = (() => {
   const tacAudio = new Audio('./sounds/fx2.wav');
   const btnAudio = new Audio('./sounds/fx3.wav');
   const winAudio = new Audio('./sounds/win.wav');
+  const tieAudio = new Audio('./sounds/tie.wav');
+  const pressStartAudio = new Audio('./sounds/press_start.wav');
+  const startAudio = new Audio('./sounds/start.wav');
+  const stopAudio = new Audio('./sounds/stop.wav');
+  const changeAudio = new Audio('./sounds/change.wav');
 
 
   function playSound(audio) {
@@ -27,6 +32,11 @@ const audioController = (() => {
     tacAudio,
     btnAudio,
     winAudio,
+    tieAudio,
+    pressStartAudio,
+    startAudio,
+    stopAudio,
+    changeAudio,
     playSound,
   };
 })();
@@ -147,6 +157,7 @@ const domManipulation = (() => {
   const p2Wins = document.getElementById('p2-wins');
   const p1WinPopup = document.getElementById('p1-win-popup');
   const p2WinPopup = document.getElementById('p2-win-popup');
+  const tiePopup = document.getElementById('tie-popup');
 
 
   const hideElement = element => { element.classList.toggle('is-hidden'); };
@@ -190,6 +201,7 @@ const domManipulation = (() => {
     const introContainer = document.querySelector('.intro-container');
     introContainer.classList.add('is-hidden');
     playersInput.classList.remove('is-hidden');
+    audioController.playSound(audioController.pressStartAudio);
   };
 
   const stopGame = () => {
@@ -200,9 +212,11 @@ const domManipulation = (() => {
     if (btnEndGame.innerHTML === 'Start Game') {
       btnEndGame.classList.add('is-success');
       btnEndGame.classList.remove('is-error');
+      audioController.playSound(audioController.stopAudio);
     } else {
       btnEndGame.classList.add('is-error');
       btnEndGame.classList.remove('is-success');
+      audioController.playSound(audioController.startAudio);
     }
   };
 
@@ -211,6 +225,7 @@ const domManipulation = (() => {
     hideElement(endGameBtnContainer);
     hideElement(btnChangePlayers);
     hideElement(btnConfirmChange);
+    audioController.playSound(audioController.changeAudio);
   };
 
   const togglePlayerInfo = () => {
@@ -219,6 +234,7 @@ const domManipulation = (() => {
     hideElement(playersInputContainer);
     hideElement(boardContainer);
     hideElement(endGameBtnContainer);
+    audioController.playSound(audioController.startAudio);
     btnAddPlayers.remove();
   };
 
@@ -233,6 +249,7 @@ const domManipulation = (() => {
     p2Wins,
     p1WinPopup,
     p2WinPopup,
+    tiePopup,
     startGame,
     stopGame,
     toggleStartStop,
@@ -258,7 +275,8 @@ const gameLogic = (p1, p2) => {
     gameBoardController.endGame();
   }
   if (gameWinner === 3) {
-    alert('THE GAME IS TIED!!');
+    domManipulation.showWinPopup(domManipulation.tiePopup);
+    audioController.playSound(audioController.tieAudio);
     gameBoardController.endGame();
   }
 };
