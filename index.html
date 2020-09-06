@@ -17,10 +17,12 @@
     </div>
         <div class="players nes-container is-dark is-hidden">
             <div class="player">
-                First Player's name: <input type="text" id="firstname">
+                <label for="firstname">First Player's Name:</label>
+                 <input type="text" id="firstname">
             </div>
             <div class="player">
-                Second Player's name: <input type="text" id="secondname">
+                <label for="secondname">Second Player's Name:</label>
+                <input type="text" id="secondname">
             </div>
             <button id="btnplayers" class="nes-btn is-primary"> Add Players</button>
             <button id="btn-confirm-change" class="is-hidden nes-btn is-primary"> Confirm Change</button>
@@ -30,6 +32,8 @@
                 <p class="title">PLAYER 1</p>
                 <p id="p1-title"></p>
                 <p class="symbol">X</p>
+                <p class="player-info-wins">WINS</p>
+                <p id="p1-wins">0</p>
             </section>
             <section class="is-hidden board">
                 <div id="0" class="square">
@@ -55,6 +59,8 @@
                 <p class="title">PLAYER 2</p>
                 <p id="p2-title"></p>
                 <p class="symbol">O</p>
+                <p class="player-info-wins">WINS</p>
+                <p id="p2-wins">0</p>
             </section>
         </div>
         <div class="end-btn-container is-hidden">

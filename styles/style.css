@@ -106,7 +106,9 @@ body {
 }
 
 #p1-title,
-#p2-title {
+#p2-title,
+#p1-wins,
+#p2-wins {
   font-size: 1.2em;
 }
 
@@ -132,6 +134,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.player-info-wins {
+  font-size: 1.4em;
 }
 
 .is-hidden {

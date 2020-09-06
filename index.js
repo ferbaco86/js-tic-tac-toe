@@ -118,8 +118,28 @@ const domManipulation = (() => {
   const btnChangePlayers = document.getElementById('change-game');
   const playersInputContainer = document.querySelector('.players');
   const btnConfirmChange = document.getElementById('btn-confirm-change');
+  const p1Wins = document.getElementById('p1-wins');
+  const p2Wins = document.getElementById('p2-wins');
+
 
   const hideElement = element => { element.classList.toggle('is-hidden'); };
+
+  const setWins = () => {
+    if (gameBoardController.checkWinner() === 1) {
+      let text1Int = Number(p1Wins.textContent);
+      text1Int += 1;
+      p1Wins.textContent = text1Int;
+    } else if (gameBoardController.checkWinner() === 2) {
+      let text2Int = Number(p2Wins.textContent);
+      text2Int += 1;
+      p2Wins.textContent = text2Int;
+    }
+  };
+
+  const resetWins = () => {
+    p1Wins.textContent = 0;
+    p2Wins.textContent = 0;
+  };
 
   const showBoard = () => {
     if (btnEndGame.innerHTML === 'Start Game') {
@@ -138,6 +158,7 @@ const domManipulation = (() => {
   };
 
   const stopGame = () => {
+    resetWins();
     gameBoardController.endGame();
     showBoard();
     hideElement(btnChangePlayers);
@@ -147,7 +168,6 @@ const domManipulation = (() => {
     } else {
       btnEndGame.classList.add('is-error');
       btnEndGame.classList.remove('is-success');
-
     }
   };
 
@@ -174,10 +194,13 @@ const domManipulation = (() => {
     boardSection,
     btnConfirmChange,
     btnChangePlayers,
+    p1Wins,
+    p2Wins,
     startGame,
     stopGame,
     toggleStartStop,
     togglePlayerInfo,
+    setWins,
   };
 })();
 
@@ -185,10 +208,12 @@ const gameLogic = (p1, p2) => {
   gameBoardController.setSymbol(p1.getSymbol(), p2.getSymbol());
   const gameWinner = gameBoardController.checkWinner();
   if (gameWinner === 1) {
+    domManipulation.setWins();
     alert(`${p1.getName()} IS THE WINNER!!`);
     gameBoardController.endGame();
   }
   if (gameWinner === 2) {
+    domManipulation.setWins();
     alert(`${p2.getName()} IS THE WINNER!!`);
     gameBoardController.endGame();
   }
@@ -237,22 +262,7 @@ const showIntro = () => {
   setTimeout(showBtn, 3700);
 };
 
-// const playBGM = () => {
-//   const bgAudio = new Audio('./sounds/IntroBg.wav');
-
-//   function playSound(audio) {
-//     if (!audio) {
-//       return;
-//     }
-//     audio.currentTime = 0;
-//     audio.play();
-//   }
-
-//   playSound(bgAudio);
-// };
-
 showIntro();
-// playBGM();
 
 domManipulation.boardSection.addEventListener('click', gameLogic.bind(window.event, addPlayers.player1, addPlayers.player2));
 domManipulation.btnAddPlayers.addEventListener('click', domManipulation.togglePlayerInfo);
@@ -264,6 +274,4 @@ domManipulation.btnStart.addEventListener('click', domManipulation.startGame);
 domManipulation.btnConfirmChange.addEventListener('click', () => {
   addPlayers.setPlayerInfo();
   domManipulation.toggleStartStop();
-
-
 });
