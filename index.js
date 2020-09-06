@@ -8,6 +8,29 @@ const player = (name, symbol) => {
   return { getName, getSymbol, setName };
 };
 
+const audioController = (() => {
+  const ticAudio = new Audio('./sounds/fx1.wav');
+  const tacAudio = new Audio('./sounds/fx2.wav');
+  const btnAudio = new Audio('./sounds/fx3.wav');
+  const winAudio = new Audio('./sounds/win.wav');
+
+
+  function playSound(audio) {
+    if (!audio) {
+      return;
+    }
+    audio.currentTime = 0;
+    audio.play();
+  }
+  return {
+    ticAudio,
+    tacAudio,
+    btnAudio,
+    winAudio,
+    playSound,
+  };
+})();
+
 const gameBoardController = (() => {
   let counterPlays = 0;
   const gameBoard = {
@@ -59,12 +82,14 @@ const gameBoardController = (() => {
         gameBoard.board[id] = p1Symbol;
         target.classList.add('is-yellow');
         target.classList.remove('is-neon');
+        audioController.playSound(audioController.tacAudio);
         counterPlays += 1;
       } else if (gameBoard.board[id] === '') {
         target.innerHTML = p2Symbol;
         gameBoard.board[id] = p2Symbol;
         target.classList.add('is-neon');
         target.classList.remove('is-yellow');
+        audioController.playSound(audioController.ticAudio);
         counterPlays += 1;
       }
     }
@@ -120,9 +145,19 @@ const domManipulation = (() => {
   const btnConfirmChange = document.getElementById('btn-confirm-change');
   const p1Wins = document.getElementById('p1-wins');
   const p2Wins = document.getElementById('p2-wins');
+  const p1WinPopup = document.getElementById('p1-win-popup');
+  const p2WinPopup = document.getElementById('p2-win-popup');
 
 
   const hideElement = element => { element.classList.toggle('is-hidden'); };
+
+  const showWinPopup = (popup) => {
+    popup.classList.remove('is-hidden');
+    const hideWinPopUp = () => {
+      popup.classList.add('is-hidden');
+    };
+    setTimeout(hideWinPopUp, 1500);
+  };
 
   const setWins = () => {
     if (gameBoardController.checkWinner() === 1) {
@@ -196,11 +231,14 @@ const domManipulation = (() => {
     btnChangePlayers,
     p1Wins,
     p2Wins,
+    p1WinPopup,
+    p2WinPopup,
     startGame,
     stopGame,
     toggleStartStop,
     togglePlayerInfo,
     setWins,
+    showWinPopup,
   };
 })();
 
@@ -209,12 +247,14 @@ const gameLogic = (p1, p2) => {
   const gameWinner = gameBoardController.checkWinner();
   if (gameWinner === 1) {
     domManipulation.setWins();
-    alert(`${p1.getName()} IS THE WINNER!!`);
+    domManipulation.showWinPopup(domManipulation.p1WinPopup);
+    audioController.playSound(audioController.winAudio);
     gameBoardController.endGame();
   }
   if (gameWinner === 2) {
     domManipulation.setWins();
-    alert(`${p2.getName()} IS THE WINNER!!`);
+    domManipulation.showWinPopup(domManipulation.p2WinPopup);
+    audioController.playSound(audioController.winAudio);
     gameBoardController.endGame();
   }
   if (gameWinner === 3) {
@@ -227,33 +267,22 @@ const showIntro = () => {
   const ticTitle = document.getElementById('tic');
   const tacTitle = document.getElementById('tac');
   const toeTitle = document.getElementById('toe');
-  const ticAudio = new Audio('./sounds/fx1.wav');
-  const tacAudio = new Audio('./sounds/fx2.wav');
-  const btnAudio = new Audio('./sounds/fx3.wav');
-
-  function playSound(audio) {
-    if (!audio) {
-      return;
-    }
-    audio.currentTime = 0;
-    audio.play();
-  }
 
   const showTic = () => {
     ticTitle.classList.remove('is-hidden');
-    playSound(tacAudio);
+    audioController.playSound(audioController.tacAudio);
   };
   const showTac = () => {
     tacTitle.classList.remove('is-hidden');
-    playSound(ticAudio);
+    audioController.playSound(audioController.ticAudio);
   };
   const showToe = () => {
     toeTitle.classList.remove('is-hidden');
-    playSound(tacAudio);
+    audioController.playSound(audioController.tacAudio);
   };
   const showBtn = () => {
     domManipulation.btnStart.classList.remove('is-hidden');
-    playSound(btnAudio);
+    audioController.playSound(audioController.btnAudio);
   };
 
   setTimeout(showTic, 2000);
