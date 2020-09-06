@@ -31,6 +31,14 @@ body {
   margin: 40px;
 }
 
+.is-yellow {
+  color:#ffff55;
+}
+
+.is-neon {
+  color: #55ffff;
+}
+
 #tic {
   justify-self: center;
   color: #ffff55;
@@ -77,6 +85,10 @@ body {
 .square {
   width: 150px;
   height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
 }
 
 .players {

@@ -57,10 +57,14 @@ const gameBoardController = (() => {
       if (counterPlays % 2 === 0 && gameBoard.board[id] === '') {
         target.innerHTML = p1Symbol;
         gameBoard.board[id] = p1Symbol;
+        target.classList.add('is-yellow');
+        target.classList.remove('is-neon');
         counterPlays += 1;
       } else if (gameBoard.board[id] === '') {
         target.innerHTML = p2Symbol;
         gameBoard.board[id] = p2Symbol;
+        target.classList.add('is-neon');
+        target.classList.remove('is-yellow');
         counterPlays += 1;
       }
     }
