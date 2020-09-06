@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: default !important;
 }
 
 body {
@@ -9,6 +10,10 @@ body {
   background-color: #000000;
 }
 
+.title {
+  font-size: 1.5em !important;
+  border-bottom: 3px solid white;
+}
 
 
 .intro-container {
@@ -28,21 +33,20 @@ body {
 
 #tic {
   justify-self: center;
-  color: #FFFF55;
+  color: #ffff55;
 }
 
 #tac {
   grid-column: 2;
   grid-row: 2;
   justify-self: center;
-  color: #55FF55;
+  color: #55ff55;
 }
 
 #toe {
   grid-column: 3;
   grid-row: 3;
-  justify-self: center;
-  color: #55FFFF;
+  color: #55ffff;
 }
 
 #start-game {
@@ -60,28 +64,56 @@ body {
 }
 
 .board {
+  margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  background-image: url(/images/Tic-tac-toe-board.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .square {
-  width: 90px;
-  height: 90px;
-  border: 5px solid goldenrod;
+  width: 150px;
+  height: 150px;
 }
 
 .players {
-  height: 220px;
+  margin: 40px auto !important;
+  height: 300px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+#btnplayers {
+  margin: 20px 0;
+}
+
+#p1-title,
+#p2-title {
+  font-size: 1.2em;
+}
+
+#p1-title {
+  color: #ffff55;
+}
+
+#p2-title {
+  color: #55ffff;
+}
+
+.symbol {
+  font-size: 1.3em;
 }
 
 .player {
   display: flex;
   flex-direction: column;
-  margin: 30px 30px;
+  margin: 15px 0;
 }
 
 .player-info {

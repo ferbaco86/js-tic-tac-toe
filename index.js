@@ -137,6 +137,14 @@ const domManipulation = (() => {
     gameBoardController.endGame();
     showBoard();
     hideElement(btnChangePlayers);
+    if (btnEndGame.innerHTML === 'Start Game') {
+      btnEndGame.classList.add('is-success');
+      btnEndGame.classList.remove('is-error');
+    } else {
+      btnEndGame.classList.add('is-error');
+      btnEndGame.classList.remove('is-success');
+
+    }
   };
 
   const toggleStartStop = () => {
