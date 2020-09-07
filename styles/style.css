@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default !important;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #000;
+}
+
+.title {
+  font-size: 1.5em !important;
+  border-bottom: 3px solid white;
+}
+
+.intro-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../images/Tic-tac-toe-board.png");
+  background-size: contain;
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-template-columns: 20% 20% 20%;
+  grid-template-rows: repeat(3, 1fr);
+  margin: 40px;
+}
+
+.is-yellow {
+  color: #ff5;
+}
+
+.is-neon {
+  color: #5ff;
+}
+
+#tic {
+  justify-self: center;
+  color: #ff5;
+}
+
+#tac {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  color: #5f5;
+}
+
+#toe {
+  grid-column: 3;
+  grid-row: 3;
+  color: #5ff;
+}
+
+#start-game {
+  width: 200px;
+  height: 200px;
+  justify-self: center;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.board-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.board {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background-image: url("../images/Tic-tac-toe-board.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.square {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.players {
+  margin: 40px auto !important;
+  height: 300px;
+  width: 800px;
+  justify-content: center;
+}
+
+#btnplayers {
+  margin: 20px 0;
+}
+
+#p1-title,
+#p2-title,
+#p1-wins,
+#p2-wins {
+  font-size: 1.2em;
+}
+
+#p1-title {
+  color: #ff5;
+}
+
+#p2-title {
+  color: #5ff;
+}
+
+.symbol {
+  font-size: 1.3em;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.player-info-wins {
+  font-size: 1.4em;
+}
+
+.win-alert {
+  color: #00a;
+}
+
+.player-info,
+.nes-balloon,
+.players {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.end-btn-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.equal-sign,
+.intro-container,
+.win-alert,
+.square {
+  font-size: 2em;
+}
+
+button:hover {
+  cursor: pointer !important;
+}

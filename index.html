@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TIC-TAC-TOE</title>
+</head>
+<body>
+    <div class="intro-container"> 
+        <h1 id="tic" class="is-hidden">TIC</h1>
+        <h1 id="tac" class="is-hidden">TAC</h1>
+        <h1 id="toe" class="is-hidden">TOE</h1>
+        <button id="start-game" class="is-hidden nes-btn is-warning" type="button">Press to Start</button>
+    </div>
+        <div class="players nes-container is-dark is-hidden">
+            <div id="alertMessage" class="nes-balloon is-hidden">
+                <p class="nes-text is-error">Please add the two players</p>
+            </div>
+            <div class="player">
+                <label for="firstname">First Player's Name:</label>
+                 <input type="text" id="firstname">
+            </div>
+            <div class="player">
+                <label for="secondname">Second Player's Name:</label>
+                <input type="text" id="secondname">
+            </div>
+            <button id="btnplayers" class="nes-btn is-primary"> Add Players</button>
+            <button id="btn-confirm-change" class="is-hidden nes-btn is-primary"> Confirm Change</button>
+        </div>
+        <div class="board-container is-hidden">
+            <div>
+                <div id="p1-win-popup" class="nes-balloon is-hidden">
+                    <p class="win-alert">WINNER!!</p>
+                    <i class="nes-icon trophy is-large"></i>
+                </div>
+                <section class="player-info nes-container is-dark">
+                    <p class="title">PLAYER 1</p>
+                    <p id="p1-title"></p>
+                    <p class="symbol">X</p>
+                    <p class="player-info-wins">WINS</p>
+                    <p id="p1-wins">0</p>
+                </section>
+            </div>
+            <div>
+                <div id="tie-popup" class="nes-balloon is-hidden">
+                    <p class="win-alert">GAME TIED</p>
+                    <p class="equal-sign">=</p>
+                </div>
+                <section class="is-hidden board">
+                    <div id="0" class="square">
+                    </div>
+                    <div id="1" class="square">
+                    </div>
+                    <div id="2" class="square">
+                    </div>
+                    <div id="3" class="square">
+                    </div>
+                    <div id="4" class="square">
+                    </div>
+                    <div id="5" class="square">
+                    </div>
+                    <div id="6" class="square">
+                    </div>
+                    <div id="7" class="square">
+                    </div>
+                    <div id="8" class="square">
+                    </div>
+                </section>
+            </div>
+            <div>
+                <div id="p2-win-popup" class="nes-balloon is-hidden">
+                    <p class="win-alert">WINNER!!</p>
+                    <i class="nes-icon trophy is-large"></i>
+                </div>
+                <section class="player-info nes-container is-dark">
+                    <p class="title">PLAYER 2</p>
+                    <p id="p2-title"></p>
+                    <p class="symbol">O</p>
+                    <p class="player-info-wins">WINS</p>
+                    <p id="p2-wins">0</p>
+                </section>
+            </div>
+        </div>
+        <div class="end-btn-container is-hidden">
+            <button id="end-game" class="nes-btn is-error">Stop Game</button>
+            <button id="change-game" class="is-hidden nes-btn">Change Players</button>
+        </div>
+    <script src="index.js"></script> 
+</body>
+</html>
