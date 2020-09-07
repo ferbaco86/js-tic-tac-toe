@@ -1,5 +1,5 @@
 # js-tic-tac-toe
-This is a collaborative project of game aimed at allowing two users to play agains eahc other. The game is capable of endng in 3 folds thats is with a winner, loser and a draw. Each user after signing up is given a symbol that identifies them on the board.
+This is a collaborative project of game aimed at allowing two users to play agains eahc other. The game is capable of endng in 3 folds that is with a winner, loser and a draw. Each user after signing up is given a symbol that identifies them on the board.
 
 ### Requirements
   - Ensure that you have node modules installed on your computer
