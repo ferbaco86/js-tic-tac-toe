@@ -32,3 +32,54 @@ test('Stop game and reset score elements', () => {
   expect(p1Wins.textContent).toBe('0');
   expect(p2Wins.textContent).not.toBe('1');
 });
+
+test('Show starting game elements', () => {
+  document.body.innerHTML = `
+    <div class="players nes-container is-dark is-hidden">
+    </div>
+    <div class="end-btn-container is-hidden">
+        <button id="end-game" class="nes-btn is-error">Stop Game</button>
+        <button id="change-game" class="is-hidden nes-btn">Change Players</button>
+    </div>
+    <button id="btn-confirm-change" class="is-hidden nes-btn is-primary"> Confirm Change</button>
+  `;
+  const playersInputContainer = document.querySelector('.players');
+  const endGameBtnContainer = document.querySelector('.end-btn-container');
+  const btnChangePlayers = document.getElementById('change-game');
+  const btnConfirmChange = document.getElementById('btn-confirm-change');
+  domManipulation.toggleStartStop(playersInputContainer, endGameBtnContainer,
+    btnChangePlayers, btnConfirmChange);
+  expect(playersInputContainer.classList).not.toContain('is-hidden');
+  expect(endGameBtnContainer.classList).not.toContain('is-hidden');
+  expect(btnChangePlayers.classList).not.toContain('is-hidden');
+});
+
+test('Show player info elements', () => {
+  document.body.innerHTML = `
+    <div class="board-container"></div>
+    <section class="is-hidden board"></section>
+    <div class="end-btn-container">
+      <button id="end-game" class="nes-btn is-error">Stop Game</button>
+    </div>
+    <div class="players nes-container is-dark is-hidden">
+    </div>
+    <input type="text" id="firstname">
+    <input type="text" id="secondname">
+    <h1 id="p1-title"></h1>
+    <h1 id="p2-title"></h1>
+    <button id="btnplayers" class="nes-btn is-primary"> Add Players</button>
+  `;
+  const txtPlayer1 = document.getElementById('firstname');
+  const txtPlayer2 = document.getElementById('secondname');
+  const boardSection = document.querySelector('.board');
+  const playersInputContainer = document.querySelector('.players');
+  const boardContainer = document.querySelector('.board-container');
+  const endGameBtnContainer = document.querySelector('.end-btn-container');
+  const btnAddPlayers = document.getElementById('btnplayers');
+  domManipulation.togglePlayerInfo(txtPlayer1, txtPlayer2, boardSection,
+    playersInputContainer, boardContainer, endGameBtnContainer, btnAddPlayers);
+  expect(boardContainer.classList).toContain('is-hidden');
+  expect(playersInputContainer.classList).not.toContain('is-hidden');
+  expect(playersInputContainer.classList).not.toContain('is-hidden');
+  expect(endGameBtnContainer.classList).toContain('is-hidden');
+});
