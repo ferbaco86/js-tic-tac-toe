@@ -83,3 +83,15 @@ test('Show player info elements', () => {
   expect(playersInputContainer.classList).not.toContain('is-hidden');
   expect(endGameBtnContainer.classList).toContain('is-hidden');
 });
+
+test('Set number of wins on', () => {
+  document.body.innerHTML = `
+  <p id="p1-wins">0</p>
+  <p id="p2-wins">0</p>
+`;
+  const p1Wins = document.getElementById('p1-wins');
+  const p2Wins = document.getElementById('p2-wins');
+  gameBoardController.checkWinner = jest.fn().mockReturnValue(1);
+  domManipulation.setWins(p1Wins, p2Wins);
+  expect(p1Wins.textContent).toBe('1');
+});
