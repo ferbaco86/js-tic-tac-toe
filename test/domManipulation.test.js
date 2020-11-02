@@ -84,7 +84,7 @@ test('Show player info elements', () => {
   expect(endGameBtnContainer.classList).toContain('is-hidden');
 });
 
-test('Set number of wins on', () => {
+test('Set number of wins on element', () => {
   document.body.innerHTML = `
   <p id="p1-wins">0</p>
   <p id="p2-wins">0</p>
@@ -94,4 +94,16 @@ test('Set number of wins on', () => {
   gameBoardController.checkWinner = jest.fn().mockReturnValue(1);
   domManipulation.setWins(p1Wins, p2Wins);
   expect(p1Wins.textContent).toBe('1');
+});
+
+test('Show win popup', () => {
+  document.body.innerHTML = `
+  <div id="p1-win-popup" class="nes-balloon is-hidden">
+  <p class="win-alert">WINNER!!</p>
+  <i class="nes-icon trophy is-large"></i>
+</div>
+`;
+  const popup = document.getElementById('p1-win-popup');
+  domManipulation.showWinPopup(popup);
+  expect(popup.classList).not.toContain('is-hidden');
 });
