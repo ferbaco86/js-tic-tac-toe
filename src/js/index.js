@@ -4,8 +4,8 @@ import gameBoardController from './gameBoardController';
 import domManipulation from './domManipulation';
 
 
-const gameLogic = (p1, p2) => {
-  gameBoardController.setSymbol(p1.getSymbol(), p2.getSymbol());
+const gameLogic = (p1, p2, target) => {
+  gameBoardController.setSymbol(p1.getSymbol(), p2.getSymbol(), target);
   const gameWinner = gameBoardController.checkWinner();
   if (gameWinner === 1) {
     domManipulation.setWins(domManipulation.p1Wins, domManipulation.p2Wins);
@@ -60,7 +60,9 @@ const inputValidation = (input1, input2) => {
 
 showIntro();
 
-domManipulation.boardSection.addEventListener('click', gameLogic.bind(window.event, addPlayers.player1, addPlayers.player2));
+domManipulation.boardSection.addEventListener('click', (e) => {
+  gameLogic(addPlayers.player1, addPlayers.player2, e.target);
+});
 domManipulation.btnAddPlayers.addEventListener('click', () => {
   if (inputValidation(addPlayers.txtPlayer1, addPlayers.txtPlayer2) === true) {
     domManipulation.togglePlayerInfo(addPlayers.txtPlayer1, addPlayers.txtPlayer2,

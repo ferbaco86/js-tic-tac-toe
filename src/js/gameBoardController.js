@@ -41,9 +41,8 @@ const gameBoardController = (() => {
     return winner;
   };
 
-  const setSymbol = (p1Symbol, p2Symbol) => {
-    if (window.event.target.nodeName === 'DIV') {
-      const { target } = window.event;
+  const setSymbol = (p1Symbol, p2Symbol, target) => {
+    if (target.nodeName === 'DIV') {
       const id = target.getAttribute('id');
       if (counterPlays % 2 === 0 && gameBoard.board[id] === '') {
         target.innerHTML = p1Symbol;
@@ -73,6 +72,7 @@ const gameBoardController = (() => {
   };
 
   return {
+    gameBoard,
     setSymbol,
     checkWinner,
     endGame,
