@@ -26,10 +26,38 @@ Some of the features of this project include but not limited to:
 ![Screenshot_2](https://user-images.githubusercontent.com/52765379/92404119-31292080-f109-11ea-943b-987a3a2d3ec8.png)
 
 
-## Using the System
-- Clone the project off GitHub to your local computer
-- Be sure to add the live server extension of VScode if you are using that
-- The live server will run the code for you in your default browser
+## Setup
+
+First, install the dependencies of the project with this command:
+
+```
+npm install
+```
+
+Then build the project with this command:
+
+```
+npm run build
+```
+
+Next set up the Webpack Dev Server executing this command:
+
+```
+npm start
+```
+
+### Usage
+
+Now you can open the project going to this address `http://localhost:7000/` in your browser
+
+### Testing
+
+For testing, run this command after following the previous Setup instructions:
+
+```
+npm test
+```
+
 
 ## Live Version
 
